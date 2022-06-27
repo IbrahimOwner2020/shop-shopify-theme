@@ -1,0 +1,37 @@
+{%- comment -%}
+    Passing argument
+    - Settings
+{%- endcomment -%}
+
+<header class="header">
+    <nav class="header__nav">
+        <div>
+            {%- if template.name == 'index' -%}
+                <h1 itemscope itemtype="http://schema.org/Organization">
+            {%- else -%}
+                <div itemscope itemtype="http://schema.org/Organization">
+            {%- endif -%}
+
+                {%- if settings.logo_image -%}
+                    <a href="/" itemprop="url">
+                        {% capture image_size %}{{ settings.logo_width }}x{% endcapture %}
+                        <img src="{{ settings.logo_image | img_url : image_size }}"
+                        alt="{{ shop.name }}"
+                        itemprop="logo">
+                    </a>
+                {%- else -%}
+                    <a class="header__logo-text" href="/" itemprop="url">
+                        <span>{{ shop.name }}</span>
+                    </a>
+                {%- endif -%}
+            {%- if template.name == 'index' -%}
+                </h1>
+            {%- else -%}
+                </div>
+            {%- endif -%}
+        </div>
+        <div>
+            {% render 'link' %}
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,28 @@
+<div> 
+    <nav class="nav-desktop">
+        <ul class="nav-desktop__list">
+            {% for link in linklists['main-menu'].links %}
+            <li class="nav-desktop__item">
+                <a href="{{ link.url }}" class="nav-desktop__link {% if link.active %}nav-desktop__link-active{% endif %}">{{ link.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    
+     
+    <nav class="nav-phone" role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                {% for link in linklists['main-menu'].links %}
+                <li class="nav__item-phone">
+                    <a href="{{ link.url }}" class="nav__link-phone {% if link.active %}nav-desktop__link-active{% endif %}">{{ link.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+</div>

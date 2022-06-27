@@ -1,0 +1,65 @@
+{% style %}
+    .hero {
+        background-image: linear-gradient(0deg, #0000007e, #0000007e), url({{ section.settings.background_image | img_url: 'master'}});
+        background-size: cover;
+        background-position: center;
+        color: {{ section.settings.hero_color }};
+        backdrop-filter: blur(70%);
+    }
+{% endstyle %}
+
+<div class="hero">
+    <section class="hero__sec">
+        <h1 class="hero__heading">{{ section.settings.hero_title }}</h1>
+        <span class="hero__description">{{ section.settings.hero_description }}</span>
+        <a href="{{ section.settings.link_url }}" class="hero__link">{{ section.settings.link_text }}</a>
+    </section>
+</div>
+
+{% schema %}
+    {
+        "name": "Hero",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "background_image",
+                "label": "Background Image"
+            },
+            {
+                "type": "text",
+                "id": "hero_title",
+                "label": "Heading",
+                "default": "Heading"
+            },
+            {
+                "type": "text",
+                "id": "hero_description",
+                "label": "Heading description",
+                "default": "Bicycle rights migas kale chips locavore, tilde taiyaki kombucha semiotics retro before they sold out health goth pok pok"
+            },
+            {
+                "type": "color",
+                "id": "hero_color",
+                "label": "Heading",
+                "default": "#fff"
+            },
+            {
+                "type": "text",
+                "id": "link_text",
+                "label": "Link Text",
+                "default": "Click Here"
+            },
+            {
+                "type": "url",
+                "id": "link_url",
+                "label": "Link Url"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Hero",
+                "category": "Text with Image"
+            }
+        ]
+    }
+{% endschema %}

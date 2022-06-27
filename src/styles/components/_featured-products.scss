@@ -1,0 +1,25 @@
+.featured-products {
+    max-width: 1200px;
+    margin: 5rem auto;
+
+    &__heading {
+        font-size: 2.5rem;
+        margin: 2rem 0;
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-column-gap: 1.8rem;
+        align-content: center;
+        grid-row-gap: 2rem;
+        grid-auto-rows: 350px;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 1210px) {
+    .featured-products {
+        margin: 5rem .5rem;
+    }
+}

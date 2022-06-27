@@ -1,0 +1,33 @@
+<div class="product">
+    <section class="product__main">
+        <div class="product__images">
+            {% for product in product.images %}
+                <img class="product__image" src="{{ product | img_url: 'master' }}" alt="{{ product.alt }} " class="product__image">
+            {% endfor %}
+        </div>
+
+        <div class="product__details">
+            <div class="product__info">
+                <h1 class="product__title">{{ product.title }}</h1>
+                <div class="product__price">{{ product.price | money }}</div>
+                <div class="product__description">{{ product.description }}</div>
+            </div>
+
+            {%- comment -%}
+                PRODUCT FORM
+            {%- endcomment -%}
+            {% form 'product', product %}
+                <div>
+                    <label for="product-color" class="product-form__color">Color</label>
+                    <select name="id" id="product-color">
+                        {% for variant in product.variants %}
+                            <option value="{{ variant.id }}">{{ variant.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="product__submit-btn" type="submit">Add To Cart</button>
+            {% endform %}
+        </div>
+    </section>
+</div>
+
